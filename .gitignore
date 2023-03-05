@@ -1,0 +1,12 @@
+node_modules
+dist
+.vercel
+.next
+yarn-error.log
+.nsm
+.vscode
+.env*
+!.env.example
+.DS_Store
+.yalc
+yalc.lock
