@@ -14,7 +14,7 @@ import {
 import { Client } from "@neondatabase/serverless"
 
 interface NeonDialectConfig {
-  databaseUrl: string
+  connectionString: string
 }
 
 export class NeonDialect implements Dialect {
@@ -80,7 +80,7 @@ class NeonConnection implements DatabaseConnection {
   constructor(config: NeonDialectConfig) {
     this.config = config
     this.client = new Client({
-      connectionString: this.config.databaseUrl,
+      connectionString: this.config.connectionString,
     })
   }
 

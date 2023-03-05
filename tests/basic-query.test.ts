@@ -8,7 +8,9 @@ test("test query with neon", async (t) => {
   }
 
   const db = new Kysely<any>({
-    dialect: new NeonDialect({ databaseUrl: process.env.NEON_DATABASE_URL! }),
+    dialect: new NeonDialect({
+      connectionString: process.env.NEON_DATABASE_URL!,
+    }),
   })
 
   // TODO come up with a schema to test this a bit more robustly and a local
