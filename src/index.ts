@@ -5,9 +5,9 @@ import {
   Dialect,
   Driver,
   Kysely,
-  SqliteAdapter,
-  SqliteIntrospector,
-  SqliteQueryCompiler,
+  PostgresAdapter,
+  PostgresIntrospector,
+  PostgresQueryCompiler,
   QueryCompiler,
   QueryResult,
 } from "kysely"
@@ -25,7 +25,7 @@ export class NeonDialect implements Dialect {
   }
 
   createAdapter() {
-    return new SqliteAdapter()
+    return new PostgresAdapter()
   }
 
   createDriver(): Driver {
@@ -33,11 +33,11 @@ export class NeonDialect implements Dialect {
   }
 
   createQueryCompiler(): QueryCompiler {
-    return new SqliteQueryCompiler()
+    return new PostgresQueryCompiler()
   }
 
   createIntrospector(db: Kysely<any>): DatabaseIntrospector {
-    return new SqliteIntrospector(db)
+    return new PostgresIntrospector(db)
   }
 }
 
@@ -85,6 +85,7 @@ class NeonConnection implements DatabaseConnection {
   }
 
   async executeQuery<O>(compiledQuery: CompiledQuery): Promise<QueryResult<O>> {
+    await this.client.connect()
     const result = await this.client.query(compiledQuery.sql, [
       ...compiledQuery.parameters,
     ])

@@ -11,10 +11,15 @@
   "license": "ISC",
   "devDependencies": {
     "@neondatabase/serverless": "^0.2.6",
+    "@types/node": "^18.14.6",
+    "ava": "^5.2.0",
+    "esbuild": "^0.17.11",
+    "esbuild-register": "^3.4.2",
     "kysely": "^0.23.4",
     "prettier": "^2.8.4",
     "tsup": "^6.6.3",
-    "typescript": "^4.9.5"
+    "typescript": "^4.9.5",
+    "ws": "^8.12.1"
   },
   "peerDependencies": {
     "@neondatabase/serverless": "^0.2.6"
