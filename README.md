@@ -3,7 +3,7 @@
 [Kysely](https://github.com/koskimas/kysely) adapter for [Neon](https://neon.tech/) serverless postgres.
 
 ```bash
-npm i kysely-neon
+npm i kysely-neon @neondatabase/serverless ws
 ```
 
 > Created with help from [kysely-d1](https://github.com/aidenwallis/kysely-d1) and the [neon serverless binding](https://github.com/neondatabase/serverless)

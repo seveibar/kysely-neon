@@ -10,7 +10,7 @@ specifiers:
   prettier: ^2.8.4
   tsup: ^6.6.3
   typescript: ^4.9.5
-  ws: ^8.12.1
+  ws: ^8.13.0
 
 devDependencies:
   '@neondatabase/serverless': 0.2.6
@@ -22,7 +22,7 @@ devDependencies:
   prettier: 2.8.4
   tsup: 6.6.3_typescript@4.9.5
   typescript: 4.9.5
-  ws: 8.12.1
+  ws: 8.13.0
 
 packages:
 
@@ -1553,8 +1553,8 @@ packages:
       signal-exit: 3.0.7
     dev: true
 
-  /ws/8.12.1:
-    resolution: {integrity: sha512-1qo+M9Ba+xNhPB+YTWUlK6M17brTut5EXbcBaMRN5pH5dFrXz7lzz1ChFSUq3bOUl8yEvSenhHmYUNJxFzdJew==}
+  /ws/8.13.0:
+    resolution: {integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==}
     engines: {node: '>=10.0.0'}
     peerDependencies:
       bufferutil: ^4.0.1
