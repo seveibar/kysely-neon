@@ -3,8 +3,18 @@
   "version": "1.0.1",
   "description": "",
   "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.mjs",
+      "require": "./dist/index.js",
+      "default": "./dist/index.js",
+      "types": "./dist/index.d.ts"
+    }
+  },
   "scripts": {
-    "build": "tsup src/index.ts --dts"
+    "build": "tsup"
   },
   "keywords": [],
   "author": "",
