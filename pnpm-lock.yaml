@@ -8,7 +8,7 @@ specifiers:
   esbuild-register: ^3.4.2
   kysely: ^0.23.4
   prettier: ^2.8.4
-  tsup: ^6.6.3
+  tsup: ^6.7.0
   typescript: ^4.9.5
   ws: ^8.12.1
 
@@ -20,7 +20,7 @@ devDependencies:
   esbuild-register: 3.4.2_esbuild@0.17.11
   kysely: 0.23.4
   prettier: 2.8.4
-  tsup: 6.6.3_typescript@4.9.5
+  tsup: 6.7.0_typescript@4.9.5
   typescript: 4.9.5
   ws: 8.12.1
 
@@ -1460,14 +1460,14 @@ packages:
     resolution: {integrity: sha512-Y/arvbn+rrz3JCKl9C4kVNfTfSm2/mEp5FSz5EsZSANGPSlQrpRI5M4PKF+mJnE52jOO90PnPSc3Ur3bTQw0gA==}
     dev: true
 
-  /tsup/6.6.3_typescript@4.9.5:
-    resolution: {integrity: sha512-OLx/jFllYlVeZQ7sCHBuRVEQBBa1tFbouoc/gbYakyipjVQdWy/iQOvmExUA/ewap9iQ7tbJf9pW0PgcEFfJcQ==}
+  /tsup/6.7.0_typescript@4.9.5:
+    resolution: {integrity: sha512-L3o8hGkaHnu5TdJns+mCqFsDBo83bJ44rlK7e6VdanIvpea4ArPcU3swWGsLVbXak1PqQx/V+SSmFPujBK+zEQ==}
     engines: {node: '>=14.18'}
     hasBin: true
     peerDependencies:
       '@swc/core': ^1
       postcss: ^8.4.12
-      typescript: ^4.1.0
+      typescript: '>=4.1.0'
     peerDependenciesMeta:
       '@swc/core':
         optional: true
