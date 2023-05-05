@@ -1,22 +1,30 @@
 import test from "ava"
-import { NeonDialect } from "../src"
 import { Kysely } from "kysely"
+import ws from "ws"
+import { NeonDialect } from "../src"
 
 test("test query with neon", async (t) => {
-  if (!process.env.NEON_DATABASE_URL) {
-    t.fail("NEON_DATABASE_URL is not set")
-  }
-
-  const db = new Kysely<any>({
+  const db = new Kysely<{ kysely_neon_test: { id: string; email: string } }>({
     dialect: new NeonDialect({
-      connectionString: process.env.NEON_DATABASE_URL!,
+      connectionString: process.env.NEON_DATABASE_URL,
+      webSocketConstructor: ws,
     }),
   })
 
-  // TODO come up with a schema to test this a bit more robustly and a local
-  // dev setup
-  const result = await db.selectFrom("account").selectAll().execute()
-  console.log("waiting for result")
+  await db.schema.dropTable("kysely_neon_test").ifExists().execute()
+
+  await db.schema
+    .createTable("kysely_neon_test")
+    .addColumn("id", "varchar", (col) => col.primaryKey())
+    .addColumn("email", "varchar")
+    .execute()
+
+  await db
+    .insertInto("kysely_neon_test")
+    .values({ id: "123", email: "info@example.com" })
+    .execute()
+
+  const result = await db.selectFrom("kysely_neon_test").selectAll().execute()
 
   t.truthy(result)
   t.truthy(result[0].email)

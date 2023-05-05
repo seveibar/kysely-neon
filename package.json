@@ -14,13 +14,14 @@
     }
   },
   "scripts": {
-    "build": "tsup"
+    "build": "tsup",
+    "test": "ava"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@neondatabase/serverless": "^0.2.6",
+    "@neondatabase/serverless": "^0.4.3",
     "@types/node": "^18.14.6",
     "ava": "^5.2.0",
     "esbuild": "^0.17.11",
@@ -29,10 +30,16 @@
     "prettier": "^2.8.4",
     "tsup": "^6.7.0",
     "typescript": "^4.9.5",
-    "ws": "^8.12.1"
+    "ws": "^8.13.0"
   },
   "peerDependencies": {
-    "@neondatabase/serverless": "^0.2.6",
-    "kysely": "0.x.x"
+    "@neondatabase/serverless": "^0.4.3",
+    "kysely": "0.x.x",
+    "ws": "^8.13.0"
+  },
+  "peerDependenciesMeta": {
+    "ws": {
+      "optional": true
+    }
   }
 }

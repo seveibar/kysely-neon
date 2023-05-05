@@ -11,11 +11,9 @@ import {
   QueryCompiler,
   QueryResult,
 } from "kysely"
-import { Client } from "@neondatabase/serverless"
+import { Client, ClientConfig, NeonConfig } from "@neondatabase/serverless"
 
-interface NeonDialectConfig {
-  connectionString: string
-}
+type NeonDialectConfig = ClientConfig & Partial<NeonConfig>
 
 export class NeonDialect implements Dialect {
   config: NeonDialectConfig
@@ -79,9 +77,12 @@ class NeonConnection implements DatabaseConnection {
 
   constructor(config: NeonDialectConfig) {
     this.config = config
-    this.client = new Client({
-      connectionString: this.config.connectionString,
-    })
+
+    this.client = new Client(config)
+    Object.assign(
+      (this.client as unknown as { neonConfig: NeonConfig }).neonConfig,
+      config
+    )
   }
 
   async executeQuery<O>(compiledQuery: CompiledQuery): Promise<QueryResult<O>> {
