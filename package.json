@@ -27,6 +27,7 @@
     "ava": "^5.2.0",
     "esbuild": "^0.17.11",
     "esbuild-register": "^3.4.2",
+    "isomorphic-webcrypto": "^2.3.8",
     "kysely": "^0.24.2",
     "prettier": "^2.8.4",
     "tsup": "^6.7.0",
