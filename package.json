@@ -15,6 +15,7 @@
   },
   "scripts": {
     "build": "tsup",
+    "typecheck": "tsc --noEmit",
     "test": "ava"
   },
   "keywords": [],
