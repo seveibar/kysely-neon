@@ -1,6 +1,6 @@
 {
   "name": "kysely-neon",
-  "version": "1.1.1",
+  "version": "1.1.3",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -15,17 +15,24 @@
   },
   "scripts": {
     "build": "tsup",
+    "typecheck": "tsc --noEmit",
     "test": "ava"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "@neondatabase/serverless": "^0.4.3",
+    "@neondatabase/serverless": "^0.4.5",
     "@types/node": "^18.14.6",
+    "@types/ws": "^8.5.4",
     "ava": "^5.2.0",
     "esbuild": "^0.17.11",
     "esbuild-register": "^3.4.2",
+    "isomorphic-webcrypto": "^2.3.8",
     "kysely": "^0.24.2",
     "prettier": "^2.8.4",
     "tsup": "^6.7.0",
