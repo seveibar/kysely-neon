@@ -1,6 +1,6 @@
 {
   "name": "kysely-neon",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -18,6 +18,10 @@
     "typecheck": "tsc --noEmit",
     "test": "ava"
   },
+  "files": [
+    "dist",
+    "README.md"
+  ],
   "keywords": [],
   "author": "",
   "license": "ISC",
