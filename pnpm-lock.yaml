@@ -1,8 +1,9 @@
 lockfileVersion: 5.4
 
 specifiers:
-  '@neondatabase/serverless': ^0.4.3
+  '@neondatabase/serverless': ^0.4.5
   '@types/node': ^18.14.6
+  '@types/ws': ^8.5.4
   ava: ^5.2.0
   esbuild: ^0.17.11
   esbuild-register: ^3.4.2
@@ -13,8 +14,9 @@ specifiers:
   ws: ^8.13.0
 
 devDependencies:
-  '@neondatabase/serverless': 0.4.3
+  '@neondatabase/serverless': 0.4.5
   '@types/node': 18.14.6
+  '@types/ws': 8.5.4
   ava: 5.2.0
   esbuild: 0.17.11
   esbuild-register: 3.4.2_esbuild@0.17.11
@@ -224,8 +226,8 @@ packages:
     dev: true
     optional: true
 
-  /@neondatabase/serverless/0.4.3:
-    resolution: {integrity: sha512-U8tpuF5f0R5WRsciR7iaJ5S2h54DWa6Z6CEW+J4KgwyvRN3q3qDz0MibdfFXU0WqnRoi/9RSf/2XN4TfeaOCbQ==}
+  /@neondatabase/serverless/0.4.5:
+    resolution: {integrity: sha512-+wYPtiqrIimONiOvHczfEdstxNUSWZ0dY+MD9vFwHBdr4Vx1adRKIKWQivG1MJ7uRpWsZZwEFQ7qhDJrgnidqw==}
     dependencies:
       '@types/pg': 8.6.6
     dev: true
@@ -261,6 +263,12 @@ packages:
       '@types/node': 18.14.6
       pg-protocol: 1.6.0
       pg-types: 2.2.0
+    dev: true
+
+  /@types/ws/8.5.4:
+    resolution: {integrity: sha512-zdQDHKUgcX/zBc4GrwsE/7dVdAD8JR4EuiAXiiUhhfyIJXXb2+PrGshFyeXWQPMmmZ2XxgaqclgpIC7eTXc1mg==}
+    dependencies:
+      '@types/node': 18.14.6
     dev: true
 
   /acorn-walk/8.2.0:
