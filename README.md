@@ -67,7 +67,7 @@ interface PersonTable {
 }
 
 const db = new Kysely<Database>({
-  dialent: new NeonDialect({
+  dialect: new NeonDialect({
     connectionString: process.env.DATABASE_URL,
     webSocketConstructor: ws,
   }),
