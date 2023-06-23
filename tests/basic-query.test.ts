@@ -15,6 +15,7 @@ test("test query with neon", async (t) => {
 
   await db.schema
     .createTable("kysely_neon_test")
+    .ifNotExists()
     .addColumn("id", "varchar", (col) => col.primaryKey())
     .addColumn("email", "varchar")
     .execute()
@@ -24,8 +25,21 @@ test("test query with neon", async (t) => {
     .values({ id: "123", email: "info@example.com" })
     .execute()
 
+  await db.transaction().execute(async (trx) => {
+    await trx
+      .insertInto("kysely_neon_test")
+      .values({ id: "456", email: "info@example.com" })
+      .execute()
+
+    await trx
+      .insertInto("kysely_neon_test")
+      .values({ id: "789", email: "info@example.com" })
+      .execute()
+  })
+
   const result = await db.selectFrom("kysely_neon_test").selectAll().execute()
 
   t.truthy(result)
+  t.is(result.length, 3)
   t.truthy(result[0].email)
 })
