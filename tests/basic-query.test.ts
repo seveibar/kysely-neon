@@ -1,5 +1,5 @@
 import test from "ava"
-import { Generated, Kysely, sql } from "kysely"
+import { Generated, Kysely } from "kysely"
 import ws from "ws"
 import { NeonDialect, NeonHTTPDialect } from "../src"
 
