@@ -1,5 +1,4 @@
 import {
-  CompiledQuery,
   DatabaseConnection,
   DatabaseIntrospector,
   Dialect,
@@ -9,10 +8,9 @@ import {
   PostgresIntrospector,
   PostgresQueryCompiler,
   QueryCompiler,
-  QueryResult,
   TransactionSettings,
 } from "kysely"
-import { NeonQueryFunction, neon } from "@neondatabase/serverless"
+import { neon } from "@neondatabase/serverless"
 import { NeonConnection } from "neon-connection"
 
 interface NeonHTTPDialectConfig {
