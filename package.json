@@ -27,6 +27,10 @@
   "license": "ISC",
   "devDependencies": {
     "@neondatabase/serverless": "^0.4.26",
+    "@semantic-release/commit-analyzer": "^10.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/npm": "^10.0.4",
+    "@semantic-release/release-notes-generator": "^11.0.4",
     "@types/node": "^18.14.6",
     "@types/ws": "^8.5.4",
     "ava": "^5.2.0",
@@ -35,6 +39,7 @@
     "isomorphic-webcrypto": "^2.3.8",
     "kysely": "^0.26.1",
     "prettier": "^2.8.4",
+    "semantic-release": "^21.0.7",
     "tsup": "^6.7.0",
     "typescript": "^4.9.5",
     "ws": "^8.13.0"
