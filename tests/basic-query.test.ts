@@ -2,6 +2,7 @@ import test from "ava"
 import { Generated, Kysely } from "kysely"
 import ws from "ws"
 import { NeonDialect, NeonHTTPDialect } from "../src"
+import { neon } from "@neondatabase/serverless"
 
 const connectionString = process.env.NEON_DATABASE_URL!
 
@@ -18,22 +19,24 @@ const contexts = [
   },
 ] as const
 
+test.beforeEach(async () => {
+  await neon(connectionString)`CREATE TABLE IF NOT EXISTS kysely_neon_test (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR
+  )`
+})
+
+test.afterEach(async () => {
+  await neon(connectionString)`DROP TABLE IF EXISTS kysely_neon_test`
+})
+
 for (const ctx of contexts) {
-  test(ctx.name, async (t) => {
+  test.serial(ctx.name, async (t) => {
     const db = new Kysely<{
       kysely_neon_test: { id: Generated<number>; email: string }
     }>({
       dialect: ctx.dialect,
     })
-
-    await db.schema.dropTable("kysely_neon_test").ifExists().execute()
-
-    await db.schema
-      .createTable("kysely_neon_test")
-      .ifNotExists()
-      .addColumn("id", "serial", (col) => col.primaryKey())
-      .addColumn("email", "varchar")
-      .execute()
 
     await db
       .insertInto("kysely_neon_test")
