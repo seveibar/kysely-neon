@@ -1,4 +1,4 @@
-lockfileVersion: '6.1'
+lockfileVersion: '6.0'
 
 settings:
   autoInstallPeers: true
@@ -6,8 +6,8 @@ settings:
 
 devDependencies:
   '@neondatabase/serverless':
-    specifier: ^0.4.5
-    version: 0.4.5
+    specifier: ^0.4.26
+    version: 0.4.26
   '@types/node':
     specifier: ^18.14.6
     version: 18.14.6
@@ -27,8 +27,8 @@ devDependencies:
     specifier: ^2.3.8
     version: 2.3.8(expo@48.0.19)(react-native@0.72.0)
   kysely:
-    specifier: ^0.24.2
-    version: 0.24.2
+    specifier: ^0.26.1
+    version: 0.26.1
   prettier:
     specifier: ^2.8.4
     version: 2.8.4
@@ -2371,8 +2371,8 @@ packages:
     dev: true
     optional: true
 
-  /@neondatabase/serverless@0.4.5:
-    resolution: {integrity: sha512-+wYPtiqrIimONiOvHczfEdstxNUSWZ0dY+MD9vFwHBdr4Vx1adRKIKWQivG1MJ7uRpWsZZwEFQ7qhDJrgnidqw==}
+  /@neondatabase/serverless@0.4.26:
+    resolution: {integrity: sha512-6DYEKos2GYn8NTgcJf33BLAx//LcgqzHVavQWe6ZkaDqmEq0I0Xtub6pzwFdq9iayNdCj7e2b0QKr5a8QKB8kQ==}
     dependencies:
       '@types/pg': 8.6.6
     dev: true
@@ -5552,8 +5552,8 @@ packages:
     dev: true
     optional: true
 
-  /kysely@0.24.2:
-    resolution: {integrity: sha512-+7eaTJNUYm2yRq1x+lEOZc+78TO35dTZ9b0dh49+Z9CTt2byMSbMiOKpwPlOyCAaHD4kILkAYWYZNywFlmBwRA==}
+  /kysely@0.26.1:
+    resolution: {integrity: sha512-FVRomkdZofBu3O8SiwAOXrwbhPZZr8mBN5ZeUWyprH29jzvy6Inzqbd0IMmGxpd4rcOCL9HyyBNWBa8FBqDAdg==}
     engines: {node: '>=14.0.0'}
     dev: true
 

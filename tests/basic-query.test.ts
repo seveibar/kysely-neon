@@ -1,45 +1,65 @@
 import test from "ava"
-import { Kysely } from "kysely"
+import { Generated, Kysely } from "kysely"
 import ws from "ws"
-import { NeonDialect } from "../src"
+import { NeonDialect, NeonHTTPDialect } from "../src"
+import { neon } from "@neondatabase/serverless"
 
-test("test query with neon", async (t) => {
-  const db = new Kysely<{ kysely_neon_test: { id: string; email: string } }>({
-    dialect: new NeonDialect({
-      connectionString: process.env.NEON_DATABASE_URL,
-      webSocketConstructor: ws,
-    }),
-  })
+const connectionString = process.env.NEON_DATABASE_URL!
 
-  await db.schema.dropTable("kysely_neon_test").ifExists().execute()
+const contexts = [
+  {
+    dialect: new NeonDialect({ connectionString, webSocketConstructor: ws }),
+    name: NeonDialect.name,
+    supportsTransactions: true,
+  },
+  {
+    dialect: new NeonHTTPDialect({ connectionString }),
+    name: NeonHTTPDialect.name,
+    supportsTransactions: false,
+  },
+] as const
 
-  await db.schema
-    .createTable("kysely_neon_test")
-    .ifNotExists()
-    .addColumn("id", "varchar", (col) => col.primaryKey())
-    .addColumn("email", "varchar")
-    .execute()
-
-  await db
-    .insertInto("kysely_neon_test")
-    .values({ id: "123", email: "info@example.com" })
-    .execute()
-
-  await db.transaction().execute(async (trx) => {
-    await trx
-      .insertInto("kysely_neon_test")
-      .values({ id: "456", email: "info@example.com" })
-      .execute()
-
-    await trx
-      .insertInto("kysely_neon_test")
-      .values({ id: "789", email: "info@example.com" })
-      .execute()
-  })
-
-  const result = await db.selectFrom("kysely_neon_test").selectAll().execute()
-
-  t.truthy(result)
-  t.is(result.length, 3)
-  t.truthy(result[0].email)
+test.beforeEach(async () => {
+  await neon(connectionString)`CREATE TABLE IF NOT EXISTS kysely_neon_test (
+    id SERIAL PRIMARY KEY,
+    email VARCHAR
+  )`
 })
+
+test.afterEach(async () => {
+  await neon(connectionString)`DROP TABLE IF EXISTS kysely_neon_test`
+})
+
+for (const ctx of contexts) {
+  test.serial(ctx.name, async (t) => {
+    const db = new Kysely<{
+      kysely_neon_test: { id: Generated<number>; email: string }
+    }>({
+      dialect: ctx.dialect,
+    })
+
+    await db
+      .insertInto("kysely_neon_test")
+      .values({ email: "info@example.com" })
+      .execute()
+
+    if (ctx.supportsTransactions) {
+      await db.transaction().execute(async (trx) => {
+        await trx
+          .insertInto("kysely_neon_test")
+          .values({ email: "info@example.com" })
+          .execute()
+
+        await trx
+          .insertInto("kysely_neon_test")
+          .values({ email: "info@example.com" })
+          .execute()
+      })
+    }
+
+    const result = await db.selectFrom("kysely_neon_test").selectAll().execute()
+
+    t.truthy(result)
+    t.truthy(result[0].email)
+  })
+}
