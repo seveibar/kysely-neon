@@ -19,15 +19,19 @@ const contexts = [
   },
 ] as const
 
+const sql = neon(connectionString);
+
 test.beforeEach(async () => {
-  await neon(connectionString)`CREATE TABLE IF NOT EXISTS kysely_neon_test (
+  await sql`DROP TABLE IF EXISTS kysely_neon_test`
+  
+  await sql`CREATE TABLE kysely_neon_test (
     id SERIAL PRIMARY KEY,
     email VARCHAR
   )`
 })
 
 test.afterEach(async () => {
-  await neon(connectionString)`DROP TABLE IF EXISTS kysely_neon_test`
+  await sql`DROP TABLE kysely_neon_test`
 })
 
 for (const ctx of contexts) {
