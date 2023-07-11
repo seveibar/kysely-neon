@@ -45,7 +45,7 @@
     "ws": "^8.13.0"
   },
   "peerDependencies": {
-    "@neondatabase/serverless": "^0.4.3",
+    "@neondatabase/serverless": "^0.4.26",
     "kysely": "0.x.x",
     "ws": "^8.13.0"
   },
