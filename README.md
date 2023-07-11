@@ -83,7 +83,8 @@ await db
 Experimental HTTP Dialect:
 
 `@neondatabase/serverless` has a new experimental `neon` function that allows making stateless HTTPS requests, 
-that should have lower latancies, but no session or transaction support.
+that should have lower latancies, but no session or transaction support. To use it, import and use `NeonHTTPDialect`
+instead of `NeonDialect`.
 
 ```typescript
 import { GeneratedAlways, Kysely } from "kysely"
