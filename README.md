@@ -6,7 +6,7 @@
 
 ## Setup
 
-Edge runtime:
+[Edge runtime](https://edge-runtime.vercel.app/) (or [cloudflare workers](https://workers.cloudflare.com/)):
 
 ```bash
 npm i kysely-neon kysely @neondatabase/serverless
@@ -20,7 +20,7 @@ npm i kysely-neon kysely @neondatabase/serverless ws
 
 ## Usage
 
-Edge runtime (cloudflare workers, vercel edge runtime etc.):
+Edge runtime:
 
 ```typescript
 import { GeneratedAlways, Kysely } from "kysely"
