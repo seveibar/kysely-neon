@@ -20,7 +20,7 @@ npm i kysely-neon kysely @neondatabase/serverless ws
 
 ## Usage
 
-Edge runtime:
+Edge runtime (cloudflare workers, vercel edge runtime etc.):
 
 ```typescript
 import { GeneratedAlways, Kysely } from "kysely"
